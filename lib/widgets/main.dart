@@ -73,7 +73,6 @@ class _MyAppState extends State<MyApp> {
                           ),
                           FlatButton(
                               child: Text('ADD TRANSACTION'),
-                              color: Colors.blueAccent,
                               textColor: Colors.red,
                               onPressed: () {
                                 setState(() {
@@ -98,7 +97,7 @@ class _MyAppState extends State<MyApp> {
                         final item = items[index];
 
                         return Container(
-                          margin: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(5),
                           child: Card(
                             elevation: 2,
                             child: Container(
@@ -126,18 +125,20 @@ class _MyAppState extends State<MyApp> {
                                     ),
                                   ),
                                   Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Container(
-                                        padding: EdgeInsets.only(left: 10),
-                                        margin: EdgeInsets.only(bottom: 5),
-                                        child: Text(
-                                          item.title.toString(),
-                                          style: TextStyle(
-                                              color: Colors.blue,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20),
+                                      Center(
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 10),
+                                          margin: EdgeInsets.only(bottom: 5),
+                                          child: Text(
+                                            item.title.toString(),
+                                            style: TextStyle(
+                                                color: Colors.blue.shade900,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20),
+                                          ),
                                         ),
                                       ),
                                       Container(
@@ -145,7 +146,7 @@ class _MyAppState extends State<MyApp> {
                                         child: Text(
                                           DateFormat.yMMMd().format(item.date),
                                           style: TextStyle(
-                                              color: Colors.blue,
+                                              color: Colors.blue.shade400,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 16),
                                         ),
