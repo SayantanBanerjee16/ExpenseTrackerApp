@@ -75,11 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Scaffold(
           body: Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.all(20),
+                  margin: EdgeInsets.all(10),
                   width: double.infinity,
                   child: Card(
+                    color: Colors.red.shade50,
                     elevation: 6,
                     child: Center(
                       child: chart(_recentItems)
