@@ -32,7 +32,7 @@ class TransactionList extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          'Rs. ' + item.amount.toString(),
+                          'Rs. ' + item.amount.toStringAsFixed(2),
                           style: TextStyle(
                               color: Colors.red,
                               decorationStyle:
