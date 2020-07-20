@@ -35,6 +35,10 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
+  List<Transaction> get _reversedList {
+    return items.reversed.toList();
+  }
+
   void addList(String title, String amount) {
     setState(() {
       items.add(Transaction(
@@ -88,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-                TransactionList(items)
+                TransactionList(_reversedList)
               ],
             ),
           ),

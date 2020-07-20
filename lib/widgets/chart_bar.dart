@@ -6,13 +6,18 @@ class chartBar extends StatelessWidget {
   final double spendingAmount;
   final double spendingPcOfTotal;
 
-  chartBar({ this.label, this.spendingAmount, this.spendingPcOfTotal});
+  chartBar({this.label, this.spendingAmount, this.spendingPcOfTotal});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        FittedBox(child: Text('Rs. ${spendingAmount.toStringAsFixed(0)} ')),
+        Container(
+          height: 15,
+          child: FittedBox(
+            child: Text('Rs. ${spendingAmount.toStringAsFixed(0)} '),
+          ),
+        ),
         SizedBox(
           height: 4,
         ),
@@ -23,21 +28,19 @@ class chartBar extends StatelessWidget {
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey,
-                    width: 1,
-                  ),
-                  color: Color.fromRGBO(220, 220, 220, 1),
-                  borderRadius: BorderRadius.circular(10)
-                ),
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 1,
+                    ),
+                    color: Color.fromRGBO(220, 220, 220, 1),
+                    borderRadius: BorderRadius.circular(10)),
               ),
               FractionallySizedBox(
                 heightFactor: spendingPcOfTotal,
                 child: Container(
                   decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(10)
-                  ),
+                      borderRadius: BorderRadius.circular(10)),
                 ),
               )
             ],
