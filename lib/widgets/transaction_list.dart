@@ -3,9 +3,10 @@ import 'package:intl/intl.dart';
 import '../model/Transaction.dart';
 
 class TransactionList extends StatelessWidget {
-  final List<Transaction> items;
+  final List<Transaction> _items;
+  final Function _deleteItem;
 
-  TransactionList(this.items);
+  TransactionList(this._items, this._deleteItem);
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +15,11 @@ class TransactionList extends StatelessWidget {
       child: Center(
         child: ListView.builder(
           // Let the ListView know how many items it needs to build.
-          itemCount: items.length,
+          itemCount: _items.length,
           // Provide a builder function. This is where the magic happens.
           // Convert each item into a widget based on the type of item it is.
           itemBuilder: (context, index) {
-            final item = items[index];
+            final item = _items[index];
 
             return Container(
               margin: EdgeInsets.all(5),
@@ -47,7 +48,9 @@ class TransactionList extends StatelessWidget {
                     style: Theme.of(context).textTheme.subtitle,
                   ),
                   trailing:
-                      IconButton(icon: Icon(Icons.delete), onPressed: () {}),
+                      IconButton(icon: Icon(Icons.delete), onPressed: () {
+                          _deleteItem(item.id);
+                      }),
                 ),
               ),
             );

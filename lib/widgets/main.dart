@@ -39,13 +39,21 @@ class _MyHomePageState extends State<MyHomePage> {
     return items.reversed.toList();
   }
 
-  void addList(String title, String amount) {
+  void _addItem(String title, String amount, DateTime selectedDate) {
     setState(() {
       items.add(Transaction(
           id: DateTime.now().millisecondsSinceEpoch,
           title: title,
           amount: double.parse(amount),
-          date: DateTime.now()));
+          date: selectedDate));
+    });
+  }
+
+  void _deleteItem(int id){
+    setState(() {
+      items.removeWhere((element) {
+        return id == element.id;
+      });
     });
   }
 
@@ -55,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
       builder: (_) {
         return GestureDetector(
           onTap: () {},
-          child: NewTransaction(addList),
+          child: NewTransaction(_addItem),
           behavior: HitTestBehavior.opaque,
         );
       },
@@ -78,22 +86,24 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Scaffold(
           body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.all(10),
-                  width: double.infinity,
-                  child: Card(
-                    color: Colors.red.shade50,
-                    elevation: 6,
-                    child: Center(
-                      child: chart(_recentItems)
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    width: double.infinity,
+                    child: Card(
+                      color: Colors.red.shade50,
+                      elevation: 6,
+                      child: Center(
+                        child: chart(_recentItems)
+                      ),
                     ),
                   ),
-                ),
-                TransactionList(_reversedList)
-              ],
+                  TransactionList(_reversedList, _deleteItem)
+                ],
+              ),
             ),
           ),
           floatingActionButtonLocation:
